@@ -16,7 +16,6 @@ form {
   display: flex;
   justify-content: space-around;
   padding: 2rem;
-  width: 100%;
 }
 
 form input {
@@ -24,6 +23,7 @@ form input {
   border-radius: 10px;
   border: none;
   font-size: medium;
+  width: 100%;
 }
 
 form select {
