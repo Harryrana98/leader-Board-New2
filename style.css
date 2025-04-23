@@ -87,5 +87,19 @@ button {
     display: flex;
     flex-direction: column;
   }
+  .newdiv{
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .newdiv p{
+    margin-top: 10px;
+  }
+
+  button{
+    margin-top: 15px;
+  }
+
+  
 }
 
