@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Leader Board</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="wrapper">
+      <form action="">
+        <input type="text" placeholder="First Name" name="fname" id="fname" /><br />
+        <input type="text" placeholder="Last Name" name="lname" id="lname" /><br />
+        <select name="country" id="country">
+          <option value="" selected disabled>Select Country</option>
+          <option value="india">India</option>
+          <option value="australia">Australia</option>
+          <option value="south africa">South Africa</option></select
+        ><br />
+        <input type="text" placeholder="Score" name="score" id="score" /><br />
+        <button type="submit">Add</button>
+      </form>
+
+      <div id="results"></div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
