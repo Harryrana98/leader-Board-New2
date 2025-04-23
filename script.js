@@ -11,34 +11,38 @@ form.addEventListener("submit", (e) => {
   //   const form = document.forms[0];
   //   const formElementsArray = Array.from(form.elements);
   //   formElementsArray.forEach((element) => console.log(element.value));
-  if(fname.value===""&& lname.value===""&&country.value===""&&score.value===""){
-    alert("Please Enter A Player's Name")
-  }else{
+  if (
+    fname.value === "" ||
+    lname.value === "" ||
+    country.value === "" ||
+    score.value === ""
+  ) {
+    alert("Please Fill In All Feilds.");
+    return;
+  } else {
+    const obj = {
+      id: Date.now(),
+      name: fname.value + " " + lname.value,
+      country: country.value,
+      score: score.value,
+    };
 
-  
-  const obj = {
-    id: Date.now(),
-    name: fname.value + " " + lname.value,
-    country: country.value,
-    score: score.value,
-  };
+    scores.push(obj);
+    // console.log(scores);
 
-  scores.push(obj);
-  // console.log(scores);
+    fname.value = "";
+    lname.value = "";
+    country.value = "";
+    score.value = "";
 
-  fname.value = "";
-  lname.value = "";
-  country.value = "";
-  score.value = "";
+    fname.focus();
 
-  fname.focus();
-
-  displayScore();
-}
+    displayScore();
+  }
 });
 
 function displayScore() {
-  results.innerHTML = " ";
+  results.innerHTML = "";
   for (let i = 0; i < scores.length; i++) {
     let newDiv = document.createElement("div");
     newDiv.className = "newdiv";
@@ -46,12 +50,15 @@ function displayScore() {
     let para = document.createElement("p");
     let para1 = document.createElement("p");
     let para2 = document.createElement("p");
+
     let increasBtn = document.createElement("button");
     increasBtn.id = "increase";
+
     let decreasBtn = document.createElement("button");
     decreasBtn.id = "decrease";
+
     let deleteBtn = document.createElement("button");
-    deleteBtn.id ="delete";
+    deleteBtn.id = "delete";
 
     increasBtn.innerText = "+5";
     decreasBtn.innerText = "-5";
@@ -69,7 +76,10 @@ function displayScore() {
       shorting(scores);
     });
     deleteBtn.addEventListener("click", function () {
-      newDiv.remove()
+      // newDiv.remove();
+      scores.splice(i, 1);
+      displayScore()
+
     });
 
     para.innerText = scores[i].name;
