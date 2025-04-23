@@ -20,6 +20,10 @@ form.addEventListener("submit", (e) => {
     alert("Please Fill In All Feilds.");
     return;
   } else {
+    if(isNaN(score.value)||score.value<0){
+      alert("Please Enter A Valid Positive Score ")
+      return;
+    }
     const obj = {
       id: Date.now(),
       name: fname.value + " " + lname.value,
@@ -60,6 +64,10 @@ function displayScore() {
     let deleteBtn = document.createElement("button");
     deleteBtn.id = "delete";
 
+    para.style.textTransform="capitalize"
+    para1.style.textTransform="capitalize"
+    para2.style.textTransform="capitalize"
+
     increasBtn.innerText = "+5";
     decreasBtn.innerText = "-5";
     deleteBtn.innerText = "Del";
@@ -71,9 +79,15 @@ function displayScore() {
       shorting(scores);
     });
     decreasBtn.addEventListener("click", function () {
-      scores[i].score = Number(scores[i].score) - Number(5);
-      displayScore();
-      shorting(scores);
+      if(scores[i].score>0){
+
+        scores[i].score = Math.max(0,Number(scores[i].score) - Number(5));
+        displayScore();
+        shorting(scores);
+      }else{
+        alert("Score Can Not Be Nagative")
+        return;
+      }
     });
     deleteBtn.addEventListener("click", function () {
       // newDiv.remove();
